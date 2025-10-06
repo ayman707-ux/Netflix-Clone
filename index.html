@@ -18,6 +18,7 @@
             width: 100%;
             max-width: 1250px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         *{
             box-sizing: border-box;
@@ -51,6 +52,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            padding: 10px 0;
         }
 
         .left-cont, .right-cont{
@@ -66,6 +68,9 @@
             list-style: none;
             display: inline-flex;
             flex-direction: row;
+            margin: 0;
+            padding: 0;
+            margin-left: 30px;
         }
         .nav-item{
             margin-right: 20px;
@@ -73,6 +78,7 @@
             opacity: .83;
             cursor: pointer;
             transition: color 0.3s ease;
+            font-size: 14px;
         }
         .nav-item.active{
             color: white;
@@ -142,15 +148,16 @@
             flex-wrap: nowrap;
             overflow-x:auto;
             overflow-y: hidden;
+            gap: 6px;
         }
         .movie-item{
             width: 245px;
             object-fit: contain;
-            margin-right: 6px;
             border-radius: 4px;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         .movie-item-img{
             width: inherit;
@@ -198,12 +205,14 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 11px;
         }
         .action-button{
             border:none;
             background-color: white;
             padding: 8px 23px;
-            margin-right: 11px;
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -276,6 +285,7 @@
             gap: 16px;
             margin-bottom: 20px;
             font-size: 16px;
+            flex-wrap: wrap;
         }
         .details-rating{
             color: #46d369;
@@ -301,6 +311,7 @@
             display: flex;
             gap: 16px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         .details-button{
             padding: 16px 24px;
@@ -578,6 +589,120 @@
             text-align: center;
         }
 
+        /* Genres Page */
+        .genres-page{
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        .genres-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .genre-item{
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(50, 50, 50, 0.6));
+            border-radius: 16px;
+            height: 120px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .genre-item:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        .genre-item:hover:before{
+            left: 100%;
+        }
+        .genre-item:hover{
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(255, 255, 255, 0.1));
+            border-color: #e50914;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+        }
+        .genre-image{
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .genre-image::after{
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(30, 30, 30, 0.8));
+        }
+        .genre-content{
+            flex: 1;
+            padding: 0 30px;
+            z-index: 2;
+        }
+        .genre-name{
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .genre-description{
+            color: #b3b3b3;
+            font-size: 14px;
+            margin: 8px 0 0 0;
+            line-height: 1.4;
+        }
+
+        /* Genre Details Page */
+        .genre-details-page{
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        .genre-results{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .genre-result-item{
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .genre-result-item:hover{
+            transform: scale(1.05);
+        }
+        .genre-result-img{
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .genre-result-title{
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .loading-more{
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
         /* Back button */
         .back-btn{
             background: rgba(255,255,255,0.1);
@@ -606,39 +731,200 @@
         }
 
         /* RESPONSIVE CSS */
-        @media (max-width:767px) {
+        @media (max-width:768px) {
+            .container{
+                padding: 0 15px;
+            }
+
+            /* Header mobile fixes */
+            .header-cont{
+                padding: 8px 0;
+            }
+            .header-brand{
+                max-width: 80px;
+            }
             .main-nav{
                 display: none;
             }
-            .banner__overview, .banner__title{
-                max-width: 100%;
+            .right-cont svg{
+                width: 20px;
+                height: 20px;
+            }
+            .right-cont img{
+                max-width: 32px;
+                margin-right: 15px;
+            }
+            .search-input.active{
+                width: 180px;
+            }
+
+            /* Banner mobile optimization */
+            .banner-section{
+                min-height: 85vh;
+                padding-top: 70px;
+            }
+            .banner-content{
+                padding-top: 40px;
+            }
+            .banner__title{
+                font-size: 32px;
+                max-width: 80%;
+                margin-bottom: 12px;
+            }
+            .banner__info{
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .banner__overview{
+                font-size: 14px;
+                max-width: 90%;
+                line-height: 1.4;
+            }
+            .action-buttons-cont{
+                margin-top: 15px;
+                gap: 8px;
+            }
+            .action-button{
+                padding: 10px 16px;
+                font-size: 14px;
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+
+            /* Movies sections mobile */
+            .movies-section{
+                margin: 25px 0;
+            }
+            .movie-section-heading{
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            .movie-item{
+                width: 160px;
+            }
+            .movies-row{
+                padding-left: 5px;
+            }
+
+            /* Details page mobile */
+            .details-hero{
+                height: 70vh;
             }
             .details-content{
                 max-width: 100%;
                 padding: 0 20px;
             }
             .details-title{
-                font-size: 32px;
+                font-size: 28px;
+                margin-bottom: 16px;
             }
+            .details-meta{
+                font-size: 14px;
+                gap: 12px;
+            }
+            .details-overview{
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+            .details-buttons{
+                gap: 12px;
+            }
+            .details-button{
+                padding: 12px 20px;
+                font-size: 14px;
+                flex: 1;
+                justify-content: center;
+            }
+            
+            /* Details info sections mobile */
             .details-info-section{
                 padding: 40px 20px;
             }
-            .back-btn{
-                margin: 20px;
+            .details-section-title{
+                font-size: 20px;
+                margin-bottom: 16px;
             }
-            .episodes-grid{
-                grid-template-columns: 1fr;
-            }
+
+            /* Episode selector mobile */
             .episode-selector{
                 padding: 20px;
+                margin: 30px 0;
+            }
+            .episode-selector h4{
+                font-size: 20px;
+                margin-bottom: 16px;
             }
             .season-slider{
-                justify-content: center;
+                justify-content: flex-start;
+                gap: 8px;
             }
             .season-btn{
                 min-width: 70px;
                 padding: 10px 16px;
                 font-size: 12px;
+            }
+            .episodes-grid{
+                grid-template-columns: 1fr;
+                max-height: 400px;
+                gap: 15px;
+            }
+            .episode-item{
+                padding: 15px;
+            }
+            .episode-thumbnail{
+                width: 60px;
+                height: 35px;
+            }
+            .episode-title{
+                font-size: 15px;
+            }
+            .episode-overview{
+                font-size: 12px;
+            }
+
+            /* Cast grid mobile */
+            .cast-grid{
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+            .cast-name{
+                font-size: 12px;
+            }
+            .cast-character{
+                font-size: 11px;
+            }
+
+            /* Server selection mobile */
+            .servers-grid{
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .server-btn{
+                padding: 14px;
+                font-size: 14px;
+            }
+            .player-frame{
+                height: 250px;
+            }
+
+            /* Search page mobile */
+            .search-page{
+                padding-top: 100px;
+            }
+            .search-results{
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+            
+            .genre-results{
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+            
+            .player-frame{
+                height: 200px;
             }
         }
     </style>
@@ -654,6 +940,8 @@
                     <li class="nav-item" data-category="tv">TV Shows</li>
                     <li class="nav-item" data-category="movie">Movies</li>
                     <li class="nav-item" data-category="trending">Trending</li>
+                    <li class="nav-item" data-category="genres">Genres</li>
+                    <li class="nav-item" data-category="live-tv">Live-TV</li>
                 </ul>
             </div>
             <div class="right-cont">
@@ -663,7 +951,7 @@
                     </svg>
                     <input type="text" class="search-input" id="search-input" placeholder="Search movies, TV shows..." onkeypress="handleSearchKeyPress(event)">
                 </div>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAjVBMVEUNfoD///8Ae30AeHoAdXcAdnl6q6z2+/vo8vLx+Ph1sbIAdHfu9PQHfH8AgYPl8vI7kJKRvr+hx8jO4+PJ3d4eioxppqza6eni7OxdoqRSnqC42dqXxsaw09Ntra8ph4l/uLmGtrdapqeozc02lZdMmZuuzM3A2NnU4+SRvL2fy8xSmZpEkZO+1NV1qqqNxlfBAAAEIElEQVR4nO3bXXeiOhQGYNgJg6AiiIiggtbP0U7//8+beJzjoCYtSAQ7630uetVmvZuEEOnWMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvjNi3Ii8rkWtpuiLGCyKxA/dOchIZ3FPmGc5tVckGf4iPMUIA9/QGYNoEZr/c4Y+0zh2FSydX2KY00RfDDJ2ZlEnbadEa+EUYziBrlkkPzav2W4rJc5vYphzTQPTbYGixBZmkc/uYphDPTG29yObHb/p7YYSSQxzqSEGJbZs6FX9kavJQ1mMQV6/RDaVjWzaDU8i/ZDGMBf116knH1nH0FUoLrQ5qR2D3hQVhl0dwUvjihh2VHctsZVqaC3By6K1IoaZ1a2Qj5QXr68leznKpWQu6y5Tfv8wbKXC7HkV7hQjN1xh+rQKmeQkca6w0acFRaoKa9+HyosXci3Ry7Kk5w4de6lhKCps+nl4d+w+q/88VD0uHA3HpSpoLJ/ErH6FdHRkIw+b3GdOPOljK841DE2yvWaiYflXjLGWTKLtaolB9w8Me938uxq+uC8x0LMZUHRboqNh9T+QY3lb4ErXrUL92dXli6N23tPwt04xRsfV+MCi5O+Hl8Gy4W20EMMvXOrhRut1Jsrd+WQy2c82Wt9TVo7hpatY5FhlhvbXtsQsLmh/11w9x0vEAAAAAAAAAAAAAAAAgH8KMc/4l/8HRXyz3e2GLf07uqD/nO+fkLHZ2eeWgnZnkVi0ifSvJOLJpUXKTtoskfxdp9fZb7TWSETprtA50XCD3RWW/Qky19dUQCx3b7r2PV1jV+dd+sU6M88iDc0v1I2Cu5bextuzLqyrdrGgdhOHmL6xrGM/0hP3EfurIM42YY/fkMRYOpR2ZDvt3Yfe/iaLPVn4j7TBiL0l9xexooe24UbXIkvWL7n7uSGryh1JjEfjofQrQefV/7T8X2OuNFIvnq3FmisxlyR+zYoWo4Fi9oRB1kAhapbyytvT4OM9OpUpr1PUZhnR8SOYqosT4sxq99AmHvifxBuEo2G2iXiXc1bEeddYp8vtaN/55K9P9bntH0qJZV+kFHrh9HAI3P8sDodVqL7nCuzwrc0Wwr9YFEjbxGuy5+MWv1F+jcgPPr2XHtAL3l9j/v4Qny+CUguvHGfnvt7n3r44LSu+IFnVIDgarW8vUsSjmepQUnr24iB65dZZYt54NXi8vtEw9V64vDOx/fmHuPre6vSmWa6/r/s5xDls7W7D8lU64fZn6vFvUt4ZMcrfk2D69VnAmQbj95xefm3KiHMn73prN/g1CuO441zm1HacQRyHo19Btva6vMz5/JWd6jQ83z8mx48fZ8kx2fi5R9++tiKiPl1rOxEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy43/ipMgzSotaqAAAAAElFTkSuQmCC" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAjVBMVEUNfoD///8Ae30AeHoAdXcAdnl6q6z2+/vo8vLx+Ph1sbIAdHfu9PQHfH8AgYPl8vI7kJKRvr+hx8jO4+PJ3d4eioxppqza6eri7OxdoqRSnqC42dqXxsaw09Ntra8ph4l/uLmGtrdapqeozc02lZdMmZuuzM3A2NnU4+SRvL2fy8xSmZpEkZO+1NV1qqqNxlfBAAAEIElEQVR4nO3bXXeiOhQGYNgJg6AiiIiggtbP0U7//8+beJzjoCYtSAQ7630uetVmvZuEEOnWMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvjNi3Ii8rkWtpuiLGCyKxA/dOchIZ3FPmGc5tVckGf4iPMUIA9/QGYNoEZr/c4Y+0zh2FSydX2KY00RfDDJ2ZlEnbadEa+EUYziBrlkkPzav2W4rJc5vYphzTQPTbYGixBZmkc/uYphDPTG29yObHb/p7YYSSQxzqSEGJbZs6FX9kavJQ1mMQV6/RDaVjWzaDU8i/ZDGMBf116knH1nH0FUoLrQ5qR2D3hQVhl0dwUvjihh2VHctsZVqaC3By6K1IoaZ1a2Qj5QXr68leznKpWQu6y5Tfv8wbKXC7HkV7hQjN1xh+rQKmeQkca6w0acFRaoKa9+HyosXci3Ry7Kk5w4de6lhKCps+nl4d+w+q/88VD0uHA3HpSpoLJ/ErH6FdHRkIw+b3GdOPOljK841DE2yvWaiYflXjLGWTKLtaolB9w8Me938uxq+uC8x0LMZUHRboqNh9T+QY3lb4ErXrUL92dXli6N23tPwt04xRsfV+MCi5O+Hl8Gy4W20EMMvXOrhRut1Jsrd+WQy2c82Wt9TVo7hpatY5FhlhvbXtsQsLmh/11w9x0vEAAAAAAAAAAAAAAAAgH8KMc/4l/8HRXyz3e2GLf07uqD/nO+fkLHZ2eeWgnZnkVi0ifSvJOLJpUXKTtoskfxdp9fZb7TWSETprtA50XCD3RWW/Qky19dUQCx3b7r2PV1jV+dd+sU6M88iDc0v1I2Cu5bextuzLqyrdrGgdhOHmL6xrGM/0hP3EfurIM42YY/fkMRYOpR2ZDvt3Yfe/iaLPVn4j7TBiL0l9xexooe24UbXIkvWL7n7uSGryh1JjEfjofQrQefV/7T8X2OuNFIvnq3FmisxlyR+zYoWo4Fi9oRB1kAhapbyytvT4OM9OpUpr1PUZhnR8SOYqosT4sxq99AmHvifxBuEo2G2iXiXc1bEeddYp8vtaN/55K9P9bntH0qJZV+kFHrh9HAI3P8sDodVqL7nCuzwrc0Wwr9YFEjbxGuy5+MWv1F+jcgPPr2XHtAL3l9j/v4Qny+CUguvHGfnvt7n3r44LSu+IFnVIDgarW8vUsSjmepQUnr24iB65dZZYt54NXi8vtEw9V64vDOx/fmHuPre6vSmWa6/r/s5xDls7W7D8lU64fZn6vFvUt4ZMcrfk2D69VnAmQbj95xefm3KiHMn73prN/g1CuO441zm1HacQRyHo19Btva6vMz5/JWd6jQ83z8mx48fZ8kx2fi5R9++tiKiPl1rOxEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy43/ipMgzSotaqAAAAAElFTkSuQmCC" alt="">
             </div>
         </div>
     </header>
@@ -737,13 +1025,85 @@
         </div>
     </div>
 
+    <!-- Genres Page -->
+    <div id="genres-page" class="page genres-page">
+        <div class="container">
+            <button class="back-btn" onclick="showPage('home')">
+                ← Back to Home
+            </button>
+            <h2 style="color: white; margin-bottom: 20px;">Browse by Genre</h2>
+            <div class="genres-grid" id="genres-grid">
+                <!-- Genres will be dynamically added -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Genre Details Page -->
+    <div id="genre-details-page" class="page genre-details-page">
+        <div class="container">
+            <button class="back-btn" onclick="showPage('genres')">
+                ← Back to Genres
+            </button>
+            <h2 id="genre-title" style="color: white; margin-bottom: 20px;"></h2>
+            <div class="genre-results" id="genre-results">
+                <!-- Genre movies/shows will be dynamically added -->
+            </div>
+            <div id="loading-more" class="loading-more" style="display: none;">Loading more...</div>
+        </div>
+    </div>
+
     <script>
         // Constants
         const apikey = "b3556f3b206e16f82df4d1f6fd4545e6";
         const apiEndpoint = "https://api.themoviedb.org/3";
         const imgPath = "https://image.tmdb.org/t/p/original";
 
+        // Genre definitions with images
+        const genreDefinitions = {
+            28: { name: 'Action', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/moqf9hZo4aDmyKHxXE7eh4Qgmkj.jpg', description: 'High-octane thrills and explosive adventures' },
+            12: { name: 'Adventure', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', description: 'Epic journeys and daring quests' },
+            16: { name: 'Animation', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/kuf6dutpsT0vSVehic3EZIqkOBt.jpg', description: 'Animated worlds come to life' },
+            35: { name: 'Comedy', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/ys0LscDFAuZxfUcpH5moiPeFfXs.jpg', description: 'Laugh out loud entertainment' },
+            80: { name: 'Crime', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/w6vjeHx3UEaBXIyc8VFqyZYKznD.jpg', description: 'Dark tales of crime and justice' },
+            99: { name: 'Documentary', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/xpR9OdRibETfuWNrdxStAJDRU7A.jpg', description: 'Real stories that inspire' },
+            18: { name: 'Drama', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/lrFImJ56Gd7bDoKmBrdRxZCuQvp.jpg', description: 'Compelling human stories' },
+            10751: { name: 'Family', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/q5pXRYTycaeW6dEgsCrd4mYPmxM.jpg', description: 'Fun for the whole family' },
+            14: { name: 'Fantasy', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/jwwVNuGRUBXcudG6wOKP9U60BzU.jpg', description: 'Magical worlds and mythical tales' },
+            36: { name: 'History', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/2d1S6fJS80fvseg6mJE8eq5o7Kx.jpg', description: 'Stories from the past' },
+            27: { name: 'Horror', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg', description: 'Spine-chilling scares' },
+            10402: { name: 'Music', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/lHu1wtNaczFPGFDTrjCSzeLPTKN.jpg', description: 'Musical journeys and performances' },
+            9648: { name: 'Mystery', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/fvnu6QHyR0gSV1JI6lMyXCny21a.jpg', description: 'Puzzles waiting to be solved' },
+            10749: { name: 'Romance', image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400', description: 'Love stories that warm the heart' },
+            878: { name: 'Science Fiction', image: 'https://media.themoviedb.org/t/p/w220_and_h330_face/6Biy7R9LfumYshur3YKhpj56MpB.jpg', description: 'Future worlds and alien encounters' },
+            53: { name: 'Thriller', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg', description: 'Edge-of-your-seat suspense' },
+            10752: { name: 'War', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/pfte7wdMobMF4CVHuOxyu6oqeeA.jpg', description: 'Epic battles and wartime stories' },
+            37: { name: 'Western', image: 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg', description: 'Tales from the American frontier' }
+        };
+
+        // Infinite scroll state
+        let genreScrollState = {
+            currentGenre: null,
+            currentPage: 1,
+            totalPages: 1,
+            isLoading: false
+        };
+
         const serverConfig = [
+            
+            {
+                name: 'Private Server (Iraq Only)',
+                getUrl: (type, id, season, episode) =>
+                    type === 'movie'
+                        ? `https://soft-baklava-6b6d81.netlify.app/${id}`
+                        : `https://imaginative-hummingbird-196eb0.netlify.app`
+            },
+            {
+                name: 'MovieBox',
+                getUrl: (type, id, season, episode, title) => {
+                    const searchQuery = title.replace(/\s+/g, '+');
+                    return `https://moviebox.id/web/searchResult?keyword=${searchQuery}`;
+                }
+            },
             {
                 name: 'HexaWatch',
                 getUrl: (type, id, season, episode) =>
@@ -751,7 +1111,6 @@
                         ? `https://hexa.watch/watch/movie/${id}`
                         : `https://hexa.watch/watch/tv/${id}/${season}/${episode}`
             },
-            
             {
                 name: 'FMovies',
                 getUrl: (type, id, season, episode) =>
@@ -877,15 +1236,18 @@
             fetchActionMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=28`,
             fetchComedyMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=35`,
             fetchHorrorMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=27`,
-            fetchRomanceMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=10749`,
+            fetchRomanceMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=10749&include_adult=false&certification_country=US&certification.lte=PG-13&sort_by=popularity.desc`,
             fetchSciFiMovies: `${apiEndpoint}/discover/movie?api_key=${apikey}&language=en-US&with_genres=878`,
             fetchDramaTV: `${apiEndpoint}/discover/tv?api_key=${apikey}&language=en-US&with_genres=18`,
             fetchComedyTV: `${apiEndpoint}/discover/tv?api_key=${apikey}&language=en-US&with_genres=35`,
             fetchCrimeTV: `${apiEndpoint}/discover/tv?api_key=${apikey}&language=en-US&with_genres=80`,
             fetchMovieDetails: (id) => `${apiEndpoint}/movie/${id}?api_key=${apikey}&append_to_response=credits,similar`,
-            fetchTVDetails: (id) => `${apiEndpoint}/tv/${id}?api_key=${apikey}&append_to_response=credits,similar,seasons`,
+            fetchTVDetails: (id) => `${apiEndpoint}/tv/${id}?api_key=${apikey}&append_to_response=credits,similar`,
             fetchTVSeason: (id, season) => `${apiEndpoint}/tv/${id}/season/${season}?api_key=${apikey}`,
-            searchMulti: (query) => `${apiEndpoint}/search/multi?api_key=${apikey}&query=${encodeURIComponent(query)}`
+            searchMulti: (query) => `${apiEndpoint}/search/multi?api_key=${apikey}&query=${encodeURIComponent(query)}`,
+            fetchByGenre: (genreId, page = 1) =>
+                `${apiEndpoint}/discover/movie?api_key=${apikey}&with_genres=${genreId}&page=${page}&sort_by=popularity.desc&include_adult=false&certification_country=US&certification.lte=PG-13`
+
         };
 
         // State management
@@ -937,20 +1299,138 @@
 
         // Content loading based on category
         function loadContent(category) {
-            const moviesContainer = document.getElementById('movies-cont');
-            moviesContainer.innerHTML = '<div class="loading">Loading...</div>';
-            
-            showPage('home');
-            
             if (category === 'home') {
+                showPage('home');
+                const moviesContainer = document.getElementById('movies-cont');
+                moviesContainer.innerHTML = '<div class="loading">Loading...</div>';
                 init();
             } else if (category === 'movie') {
+                showPage('home');
+                const moviesContainer = document.getElementById('movies-cont');
+                moviesContainer.innerHTML = '<div class="loading">Loading...</div>';
                 loadMovieCategories();
             } else if (category === 'tv') {
+                showPage('home');
+                const moviesContainer = document.getElementById('movies-cont');
+                moviesContainer.innerHTML = '<div class="loading">Loading...</div>';
                 loadTVCategories();
             } else if (category === 'trending') {
+                showPage('home');
+                const moviesContainer = document.getElementById('movies-cont');
+                moviesContainer.innerHTML = '<div class="loading">Loading...</div>';
                 loadTrendingCategories();
+            } else if (category === 'genres') {
+                showPage('genres');
+                loadGenres();
             }
+        }
+
+        // Genres functionality
+        function loadGenres() {
+            const genresGrid = document.getElementById('genres-grid');
+            
+            const genresHTML = Object.entries(genreDefinitions).map(([id, genre]) => `
+                <div class="genre-item" onclick="openGenreDetails(${id}, '${genre.name}')">
+                    <div class="genre-image" style="background-image: url('${genre.image}')"></div>
+                    <div class="genre-content">
+                        <h3 class="genre-name">${genre.name}</h3>
+                        <p class="genre-description">${genre.description}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            genresGrid.innerHTML = genresHTML;
+        }
+
+        function openGenreDetails(genreId, genreName) {
+            // Reset scroll state
+            genreScrollState = {
+                currentGenre: genreId,
+                currentPage: 1,
+                totalPages: 1,
+                isLoading: false
+            };
+            
+            showPage('genre-details');
+            document.getElementById('genre-title').textContent = genreName + ' Movies';
+            
+            const genreResults = document.getElementById('genre-results');
+            genreResults.innerHTML = '<div class="loading">Loading movies...</div>';
+            
+            loadGenreMovies(genreId, 1, true);
+        }
+
+        function loadGenreMovies(genreId, page = 1, clearResults = false) {
+            if (genreScrollState.isLoading) return;
+            
+            genreScrollState.isLoading = true;
+            const loadingMore = document.getElementById('loading-more');
+            
+            if (page > 1) {
+                loadingMore.style.display = 'block';
+            }
+            
+            fetch(apiPaths.fetchByGenre(genreId, page))
+            .then(res => res.json())
+            .then(data => {
+                genreScrollState.totalPages = data.total_pages;
+                genreScrollState.currentPage = page;
+                genreScrollState.isLoading = false;
+                
+                const genreResults = document.getElementById('genre-results');
+                
+                if (clearResults) {
+                    genreResults.innerHTML = '';
+                }
+                
+                if (data.results && data.results.length > 0) {
+                    const moviesHTML = data.results.map(movie => {
+                        if (!movie.poster_path) return '';
+                        
+                        return `
+                            <div class="genre-result-item" onclick="openDetails('movie', ${movie.id})">
+                                <img class="genre-result-img" src="${imgPath}${movie.poster_path}" alt="${movie.title}" />
+                                <div class="genre-result-title">${movie.title}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    
+                    genreResults.insertAdjacentHTML('beforeend', moviesHTML);
+                } else if (clearResults) {
+                    genreResults.innerHTML = '<div class="loading">No movies found in this genre</div>';
+                }
+                
+                loadingMore.style.display = 'none';
+            })
+            .catch(err => {
+                console.error(err);
+                genreScrollState.isLoading = false;
+                loadingMore.style.display = 'none';
+                if (clearResults) {
+                    document.getElementById('genre-results').innerHTML = '<div class="loading">Failed to load movies</div>';
+                }
+            });
+        }
+
+        // Infinite scroll for genre page
+        function setupGenreInfiniteScroll() {
+            window.addEventListener('scroll', () => {
+                if (currentPage !== 'genre-details') return;
+                
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                const isNearBottom = scrollTop + clientHeight >= scrollHeight - 1000;
+                
+                if (isNearBottom && 
+                    !genreScrollState.isLoading && 
+                    genreScrollState.currentPage < genreScrollState.totalPages) {
+                    
+                    loadGenreMovies(
+                        genreScrollState.currentGenre, 
+                        genreScrollState.currentPage + 1, 
+                        false
+                    );
+                }
+            });
         }
 
         // Search functionality with smooth animation
@@ -1262,7 +1742,7 @@
             // Display cast
             displayCast(movie.credits?.cast || []);
             
-            // Display similar content
+            // Display similar content - FIXED
             displaySimilarContent(movie.similar?.results || [], type);
             
             // Setup servers
@@ -1434,9 +1914,12 @@
             const similarHTML = topSimilar.map(item => {
                 const title = item.title || item.name;
                 const imagePath = item.backdrop_path || item.poster_path;
+                const itemType = item.media_type || type; // Use media_type if available, otherwise use current type
+                
+                if (!imagePath) return ''; // Skip items without images
                 
                 return `
-                    <div class="movie-item" onclick="openDetails('${type}', ${item.id})">
+                    <div class="movie-item" onclick="openDetails('${itemType}', ${item.id})">
                         <img class="movie-item-img" src="${imgPath}${imagePath}" alt="${title}" />
                     </div>
                 `;
@@ -1461,7 +1944,15 @@
             const server = serverConfig[serverIndex];
             const season = type === 'tv' ? currentSeason : 1;
             const episode = type === 'tv' ? currentEpisode : 1;
-            const url = server.getUrl(type, id, season, episode);
+            
+            // Get the title for MovieBox server
+            let title = '';
+            if (serverIndex === 1) { // MovieBox is at index 1
+                const detailsTitle = document.querySelector('.details-title');
+                title = detailsTitle ? detailsTitle.textContent : '';
+            }
+            
+            const url = server.getUrl(type, id, season, episode, title);
             
             const playerContainer = document.getElementById('player-container');
             playerContainer.innerHTML = `
@@ -1470,10 +1961,55 @@
             playerContainer.classList.add('active');
         }
 
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            mobileMenu.classList.add('active');
+            overlay.style.display = 'block';
+            
+            // Prevent body scrolling when menu is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            mobileMenu.classList.remove('active');
+            overlay.style.display = 'none';
+            
+            // Restore body scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleMobileNavClick(element, category) {
+            // Update mobile nav active state
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            // Update desktop nav active state (for consistency)
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // Close mobile menu
+            closeMobileMenu();
+            
+            // Load content
+            currentCategory = category;
+            loadContent(category);
+        }
+
         // Initialize everything
         window.addEventListener('load', function() {
             init();
             handleNavigation();
+            setupGenreInfiniteScroll();
             
             window.addEventListener('scroll', function(){
                 const header = document.getElementById('header');
